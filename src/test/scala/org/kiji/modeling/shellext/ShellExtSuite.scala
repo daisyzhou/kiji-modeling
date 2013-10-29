@@ -19,11 +19,16 @@
 
 package org.kiji.modeling.shellext
 
+import java.io.InputStream
+
 import org.kiji.express.KijiSuite
 import org.kiji.schema.shell.DDLParser
 import org.kiji.schema.shell.Environment
 import org.kiji.schema.shell.MockKijiSystem
 import org.kiji.schema.shell.input.NullInputSource
+import org.kiji.schema.Kiji
+import org.kiji.express.util.Resources._
+import org.kiji.schema.shell.api.Client
 
 /**
  * Provides utility functions for tests that employ the KijiExpress extension to the KijiSchema
@@ -84,5 +89,40 @@ trait ShellExtSuite extends KijiSuite {
    */
   protected def getLoadedParser(): DDLParser = {
     new DDLParser(getLoadedEnvironment())
+  }
+
+  /**
+   * Executes a series of KijiSchema Shell DDL commands, separated by `;`.
+   *
+   * @param kiji to execute the commands against.
+   * @param commands to execute against the Kiji instance.
+   */
+  def executeDDLString(kiji: Kiji, commands: String) {
+    doAndClose(Client.newInstance(kiji.getURI)) { ddlClient =>
+      ddlClient.executeUpdate(commands)
+    }
+  }
+
+  /**
+   * Executes a series of KijiSchema Shell DDL commands, separated by `;`.
+   *
+   * @param kiji to execute the commands against.
+   * @param stream to read a series of commands to execute against the Kiji instance.
+   */
+  def executeDDLStream(kiji: Kiji, stream: InputStream) {
+    doAndClose(Client.newInstance(kiji.getURI)) { ddlClient =>
+      ddlClient.executeStream(stream)
+    }
+  }
+
+  /**
+   * Executes a series of KijiSchema Shell DDL commands, separated by `;`.
+   *
+   * @param kiji to execute the commands against.
+   * @param resourcePath to the classpath resource that a series of commands to execute
+   *     against the Kiji instance will be read from.
+   */
+  def executeDDLResource(kiji: Kiji, resourcePath: String) {
+    executeDDLStream(kiji, getClass.getClassLoader.getResourceAsStream(resourcePath))
   }
 }

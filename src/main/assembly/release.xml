@@ -46,17 +46,6 @@
     </fileSet>
     <fileSet>
       <useDefaultExcludes>false</useDefaultExcludes>
-      <outputDirectory>bin</outputDirectory>
-      <directory>src/main/scripts</directory>
-      <fileMode>0755</fileMode>
-      <excludes>
-        <exclude>*~</exclude>
-        <exclude>*.swp</exclude>
-      </excludes>
-      <filtered>false</filtered>
-    </fileSet>
-    <fileSet>
-      <useDefaultExcludes>false</useDefaultExcludes>
       <outputDirectory>conf</outputDirectory>
       <directory>src/main/conf</directory>
       <fileMode>0644</fileMode>
@@ -74,17 +63,4 @@
       <fileMode>0644</fileMode>
     </fileSet>
   </fileSets>
-
-  <dependencySets>
-    <dependencySet>
-      <outputDirectory>lib</outputDirectory>
-      <scope>runtime</scope>
-      <useTransitiveFiltering>true</useTransitiveFiltering>
-      <fileMode>0644</fileMode>
-      <excludes>
-        <exclude>org.kiji.schema:kiji-schema</exclude>
-      </excludes>
-    </dependencySet>
-  </dependencySets>
-
 </assembly>

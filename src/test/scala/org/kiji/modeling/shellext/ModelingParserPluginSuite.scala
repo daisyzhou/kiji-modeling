@@ -19,10 +19,16 @@
 
 package org.kiji.modeling.shellext
 
+import scala.collection.JavaConverters.asScalaIteratorConverter
+import scala.collection.JavaConverters.enumerationAsScalaIteratorConverter
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 import org.kiji.schema.shell.ddl.UseModuleCommand
+import org.kiji.schema.shell.spi.ParserPluginFactory
+import java.util.ServiceLoader
+import java.io.{InputStreamReader, BufferedReader}
 
 /**
  * Tests parsing clauses for the KijiExpress extension to KijiSchema DDL Shell. Such parsers are
@@ -48,7 +54,7 @@ class ModelingParserPluginSuite extends ShellExtSuite {
   test("The modeling schema-shell module can be loaded.") {
     val parser = getBaseParser()
     val result = parser.parseAll(parser.statement, "MODULE modeling;")
-    assert(result.successful, "'MODULE modeling;' statement note executed successfully.")
+    assert(result.successful, "'MODULE modeling;' statement not executed successfully.")
     assert(result.get.isInstanceOf[UseModuleCommand],
         "Parsing 'MODULE modeling;' produced incorrect result type.")
     assert(Option(result.get.exec()).isDefined, "Executing 'MODULE modeling;' statement failed.")

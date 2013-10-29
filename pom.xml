@@ -341,8 +341,8 @@
   </repositories>
 
   <scm>
-    <connection>scm:git:git@github.com:kijiproject/kiji-express.git</connection>
-    <url>scm:git:git@github.com:kijiproject/kiji-express.git</url>
-    <developerConnection>scm:git:git@github.com:kijiproject/kiji-express.git</developerConnection>
+    <connection>scm:git:git@github.com:kijiproject/kiji-modeling.git</connection>
+    <url>scm:git:git@github.com:kijiproject/kiji-modeling.git</url>
+    <developerConnection>scm:git:git@github.com:kijiproject/kiji-modeling.git</developerConnection>
   </scm>
 </project>
