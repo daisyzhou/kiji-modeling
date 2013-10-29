@@ -229,7 +229,7 @@ class ModelDefinitionSuite extends FunSuite {
     val thrown = intercept[ValidationException] {
       ModelDefinition.fromJson(invalidPreparerDefinition)
     }
-    val badPreparer = "org.kiji.express.modeling.config.ModelDefinitionSuite$MyBadPreparer"
+    val badPreparer = "org.kiji.modeling.config.ModelDefinitionSuite$MyBadPreparer"
     assert(thrown.getMessage.contains("An instance of the class \"%s\"".format(badPreparer) +
         " could not be cast as an instance of Preparer. Please ensure that you have" +
         " provided a valid class that inherits from the Preparer class."))
@@ -239,7 +239,7 @@ class ModelDefinitionSuite extends FunSuite {
     val thrown = intercept[ValidationException] {
       ModelDefinition.fromJson(invalidTrainerDefinition)
     }
-    val badTrainer = "org.kiji.express.modeling.config.ModelDefinitionSuite$MyBadTrainer"
+    val badTrainer = "org.kiji.modeling.config.ModelDefinitionSuite$MyBadTrainer"
     assert(thrown.getMessage.contains("An instance of the class \"%s\"".format(badTrainer) +
         " could not be cast as an instance of Trainer. Please ensure that you have" +
         " provided a valid class that inherits from the Trainer class."))
@@ -249,7 +249,7 @@ class ModelDefinitionSuite extends FunSuite {
     val thrown = intercept[ValidationException] {
       ModelDefinition.fromJson(invalidExtractorDefinition)
     }
-    val badExtractor = "org.kiji.express.modeling.config.ModelDefinitionSuite$MyBadExtractor"
+    val badExtractor = "org.kiji.modeling.config.ModelDefinitionSuite$MyBadExtractor"
     assert(thrown.getMessage.contains("An instance of the class \"%s\"".format(badExtractor) +
             " could not be cast as an instance of Extractor. Please ensure that you have" +
             " provided a valid class that inherits from the Extractor class."))
@@ -259,7 +259,7 @@ class ModelDefinitionSuite extends FunSuite {
     val thrown = intercept[ValidationException] {
       ModelDefinition.fromJson(invalidScorerDefinition)
     }
-    val badScorer = "org.kiji.express.modeling.config.ModelDefinitionSuite$MyBadScorer"
+    val badScorer = "org.kiji.modeling.config.ModelDefinitionSuite$MyBadScorer"
     assert(thrown.getMessage.contains("An instance of the class \"%s\"".format(badScorer) +
             " could not be cast as an instance of Scorer. Please ensure that you have" +
             " provided a valid class that inherits from the Scorer class."))
@@ -269,7 +269,7 @@ class ModelDefinitionSuite extends FunSuite {
     val thrown = intercept[ValidationException] {
       ModelDefinition.fromJson(invalidEvaluatorDefinition)
     }
-    val badEvaluator = "org.kiji.express.modeling.config.ModelDefinitionSuite$MyBadEvaluator"
+    val badEvaluator = "org.kiji.modeling.config.ModelDefinitionSuite$MyBadEvaluator"
     assert(thrown.getMessage.contains("An instance of the class \"%s\"".format(badEvaluator) +
       " could not be cast as an instance of Evaluator. Please ensure that you have" +
       " provided a valid class that inherits from the Evaluator class."))
