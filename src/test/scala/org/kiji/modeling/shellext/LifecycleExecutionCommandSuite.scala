@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.shellext
+package org.kiji.modeling.shellext
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.shellext
+package org.kiji.modeling.shellext
 
 import java.io.File
 import java.io.FileWriter

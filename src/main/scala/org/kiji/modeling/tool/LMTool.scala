@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.tool
+package org.kiji.modeling.tool
 
 import com.twitter.scalding.Args
 import com.twitter.scalding.Mode

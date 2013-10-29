@@ -37,6 +37,7 @@ import org.kiji.express.flow.KijiInput
 import org.kiji.express.flow.KijiJob
 import org.kiji.express.util.Resources.doAndClose
 import org.kiji.express.util.Resources.doAndRelease
+import org.kiji.modeling.framework.ModelPipeConversions
 import org.kiji.schema.Kiji
 import org.kiji.schema.KijiTable
 import org.kiji.schema.KijiURI
@@ -80,7 +81,7 @@ class RecommendationPipeSuite extends KijiSuite {
    * This is the first step in finding which products co-occur frequently.
    */
   test("Prepare Itemsets Job runs properly") {
-    class PrepareItemsetsJob(args: Args) extends KijiJob(args) {
+    class PrepareItemsetsJob(args: Args) extends KijiJob(args) with ModelPipeConversions {
       KijiInput(args("input"), "family:column" -> 'slice)
         .map('slice -> 'order) {
           slice: KijiSlice[String] => slice.getFirstValue().split(",").map(_.trim).toList
@@ -117,7 +118,7 @@ class RecommendationPipeSuite extends KijiSuite {
    * #of orders containing flour.
    */
   test("Joining with Group Count works properly") {
-    class JoinWithGroupCountJob(args: Args) extends KijiJob(args) {
+    class JoinWithGroupCountJob(args: Args) extends KijiJob(args) with ModelPipeConversions {
       KijiInput(args("input"), "family:column" -> 'slice)
         .flatMap('slice -> 'product) {
           slice: KijiSlice[String] => slice.getFirstValue().split(",").map(_.trim)
@@ -139,7 +140,7 @@ class RecommendationPipeSuite extends KijiSuite {
   }
 
   test("Joining with Count works properly") {
-    class JoinWithCountJob(args: Args) extends KijiJob(args) {
+    class JoinWithCountJob(args: Args) extends KijiJob(args) with ModelPipeConversions {
       KijiInput(args("input"), "family:column" -> 'slice)
           .joinWithCount('grpCount)
           .write(TextLine(args("output")))
@@ -158,7 +159,7 @@ class RecommendationPipeSuite extends KijiSuite {
    * This tests runs a frequent itemset miner with the total number of orders provided.
    */
   test("Filter by Support works with Constant Normalizer") {
-    class FrequentItemsetFinderJob(args: Args) extends KijiJob(args) {
+    class FrequentItemsetFinderJob(args: Args) extends KijiJob(args) with ModelPipeConversions {
       KijiInput(args("input"), "family:column" -> 'slice)
           .map('slice -> 'order) {
             slice: KijiSlice[String] => slice.getFirstValue().split(",").map(_.trim).toList
@@ -183,7 +184,7 @@ class RecommendationPipeSuite extends KijiSuite {
    * This test runs an actual frequent itemset miner.
    */
   test("Filter by Support works with Normalizing Pipe") {
-    class FrequentItemsetFinderJob(args: Args) extends KijiJob(args) {
+    class FrequentItemsetFinderJob(args: Args) extends KijiJob(args) with ModelPipeConversions {
       val totalOrders = KijiInput(args("input"), "family:column" -> 'slice)
           .groupAll { _.size('norm)}
 

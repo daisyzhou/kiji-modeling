@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.tool
+package org.kiji.modeling.tool
 
 import java.io.File
 

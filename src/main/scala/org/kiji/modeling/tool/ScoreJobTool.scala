@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.tool
+package org.kiji.modeling.tool
 
 import org.apache.hadoop.conf.Configured
 import org.apache.hadoop.hbase.HBaseConfiguration
