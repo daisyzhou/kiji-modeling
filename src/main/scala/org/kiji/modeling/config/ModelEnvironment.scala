@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.config
+package org.kiji.modeling.config
 
 import scala.io.Source
 
@@ -32,7 +32,7 @@ import org.kiji.schema.util.FromJson
 import org.kiji.schema.util.KijiNameValidator
 import org.kiji.schema.util.ProtocolVersion
 import org.kiji.schema.util.ToJson
-import org.kiji.express.modeling.framework.ModelConverters
+import org.kiji.modeling.framework.ModelConverters
 
 /**
  * A ModelEnvironment is a specification describing how to execute a linked model definition.
@@ -168,7 +168,7 @@ final case class ModelEnvironment(
     trainEnvironment: Option[TrainEnvironment] = None,
     scoreEnvironment: Option[ScoreEnvironment] = None,
     evaluateEnvironment: Option[EvaluateEnvironment] = None,
-    private[express] val protocolVersion: ProtocolVersion =
+    private[modeling] val protocolVersion: ProtocolVersion =
         ModelEnvironment.CURRENT_MODEL_DEF_VER) {
   // Ensure that all fields set for this model environment are valid.
   ModelEnvironment.validateModelEnvironment(this)
@@ -234,7 +234,7 @@ object ModelEnvironment {
   val VERSION_REGEX: String = "[0-9]+(.[0-9]+)*"
 
   /** Message to show the user when there is an error validating their model definition. */
-  private[express] val VALIDATION_MESSAGE = "One or more errors occurred while validating your" +
+  private[modeling] val VALIDATION_MESSAGE = "One or more errors occurred while validating your" +
       " model environment. Please correct the problems in your model environment and try again."
 
   /**
@@ -391,7 +391,7 @@ object ModelEnvironment {
   /**
    * Wrapper function for validating the input specification map for the prepare and train phase.
    *
-   * @param inputSpecs the map of [[org.kiji.express.modeling.config.InputSpec]] to validate.
+   * @param inputSpecs the map of [[org.kiji.modeling.config.InputSpec]] to validate.
    * @return an optional ValidationException if there are errors encountered.
    */
   def validateInputSpecs(inputSpecs: Map[String, InputSpec]): Seq[ValidationException] = {
@@ -435,7 +435,7 @@ object ModelEnvironment {
   /**
    * Wrapper function for validating the output specification map for the prepare and train phase.
    *
-   * @param outputSpecs the map of [[org.kiji.express.modeling.config.OutputSpec]] to validate.
+   * @param outputSpecs the map of [[org.kiji.modeling.config.OutputSpec]] to validate.
    * @return an optional ValidationException if there are errors encountered.
    */
   def validateOutputSpecs(outputSpecs: Map[String, OutputSpec]): Seq[ValidationException] = {

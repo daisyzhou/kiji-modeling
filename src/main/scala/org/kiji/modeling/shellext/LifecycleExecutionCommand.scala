@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.shellext
+package org.kiji.modeling.shellext
 
 import java.io.File
 
@@ -27,9 +27,9 @@ import org.apache.hadoop.hbase.HBaseConfiguration
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
-import org.kiji.express.modeling.ScoreProducerJobBuilder
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
+import org.kiji.modeling.ScoreProducerJobBuilder
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
 import org.kiji.schema.shell.DDLException
 import org.kiji.schema.shell.Environment
 import org.kiji.schema.shell.ddl.DDLCommand
@@ -37,7 +37,7 @@ import org.kiji.schema.shell.ddl.DDLCommand
 /**
  * A DDL shell command capable of running a set of modeling lifecycle phases. An instance of this
  * command should be obtained by parsing a statement in the DDL language extension defined by
- * [[org.kiji.express.shellext.ModelingParserPlugin]].
+ * [[org.kiji.modeling.shellext.ModelingParserPlugin]].
  *
  * @param lifecyclePhases is a list of modeling lifecycle phases that should be executed.
  * @param modelDefConfigureVia specifies how to load a model definition.
@@ -47,7 +47,7 @@ import org.kiji.schema.shell.ddl.DDLCommand
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] final class LifecycleExecutionCommand (
+private[modeling] final class LifecycleExecutionCommand (
     val lifecyclePhases: List[LifeCyclePhase],
     val modelDefConfigureVia: ConfigureVia,
     val modelEnvConfigureVia: ConfigureVia,
@@ -84,7 +84,7 @@ private[express] final class LifecycleExecutionCommand (
    *
    * @return the Hadoop configuration for jobs launched while executing lifecycle phases.
    */
-  private[express] def hadoopConfiguration: Configuration = {
+  private[modeling] def hadoopConfiguration: Configuration = {
     // Extract libjars and arbitrary properties to set in the configuration, specified by the user.
     val JobsConfiguration(libjarsList, propertiesMap) = jobsConfiguration
     // The configuration we'll populate with user settings.

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import cascading.tuple.Fields
 import com.twitter.scalding.SequenceFile
@@ -27,8 +27,8 @@ import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.Path
 
 import org.kiji.express.flow._
-import org.kiji.express.modeling.KeyValueStore
-import org.kiji.express.modeling.config._
+import org.kiji.modeling.KeyValueStore
+import org.kiji.modeling.config._
 import org.kiji.mapreduce.KijiContext
 import org.kiji.mapreduce.kvstore.lib.{ AvroKVRecordKeyValueStore => JAvroKVRecordKeyValueStore }
 import org.kiji.mapreduce.kvstore.lib.{ AvroRecordKeyValueStore => JAvroRecordKeyValueStore }
@@ -42,7 +42,7 @@ import org.kiji.schema.KijiURI
 
 /**
  * Utility object for the model lifecycle. Transforms the various input, output and key-value
- * specifications from the [[org.kiji.express.modeling.config.ModelEnvironment]] to classes used
+ * specifications from the [[org.kiji.modeling.config.ModelEnvironment]] to classes used
  * in the model lifecycle.
  */
 object ModelJobUtils {
@@ -53,7 +53,7 @@ object ModelJobUtils {
   sealed trait PhaseType
 
   /**
-   * Companion object for [[org.kiji.express.modeling.impl.ModelJobUtils.PhaseType]].
+   * Companion object for [[org.kiji.modeling.impl.ModelJobUtils.PhaseType]].
    */
   object PhaseType {
     object PREPARE extends PhaseType
@@ -219,7 +219,7 @@ object ModelJobUtils {
    * Get the [[org.kiji.express.flow.TimeRange]] for the given input specification to the model
    * environment.
    *
-   * @param inputSpec of a phase in the [[org.kiji.express.modeling.config.ModelEnvironment]].
+   * @param inputSpec of a phase in the [[org.kiji.modeling.config.ModelEnvironment]].
    * @return a [[org.kiji.express.flow.TimeRange]] instance for the data request.
    */
   private def getTimeRange(inputSpec: InputSpec): TimeRange = {
@@ -235,7 +235,7 @@ object ModelJobUtils {
   /**
    * Get the map from input columns to field names from an input specification.
    *
-   * @param inputSpec of a phase in the [[org.kiji.express.modeling.config.ModelEnvironment]].
+   * @param inputSpec of a phase in the [[org.kiji.modeling.config.ModelEnvironment]].
    * @return a map from the column requests to field names.
    */
   private def getInputColumnMap(inputSpec: KijiInputSpec): Map[ColumnRequestInput, Symbol] = {
@@ -343,7 +343,7 @@ object ModelJobUtils {
   }
 
   /**
-   * Convert an input specification from a [[org.kiji.express.modeling.config.ModelEnvironment]]
+   * Convert an input specification from a [[org.kiji.modeling.config.ModelEnvironment]]
    * into a Scalding [[com.twitter.scalding.Source]] that can be used by the phases of the model
    * lifecycle.
    *
@@ -378,7 +378,7 @@ object ModelJobUtils {
    * Get a map from field names to output columns for a given output specification for a phase of
    * the model lifecycle.
    *
-   * @param kijiOutputSpec is the [[org.kiji.express.modeling.config.KijiOutputSpec]] for the phase.
+   * @param kijiOutputSpec is the [[org.kiji.modeling.config.KijiOutputSpec]] for the phase.
    * @return a map from field name to string specifying the Kiji column.
    */
   private def getOutputColumnMap(
@@ -397,7 +397,7 @@ object ModelJobUtils {
   }
 
   /**
-   * Convert an output specification from a [[org.kiji.express.modeling.config.ModelEnvironment]]
+   * Convert an output specification from a [[org.kiji.modeling.config.ModelEnvironment]]
    * into a Scalding [[com.twitter.scalding.Source]] that can be used by the phases of the model
    * lifecycle.
    *

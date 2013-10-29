@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.config
+package org.kiji.modeling.config
 
 import java.io.File
 
@@ -27,8 +27,8 @@ import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
-import org.kiji.express.modeling.Trainer
-import org.kiji.express.modeling.framework.ModelExecutor
+import org.kiji.modeling.Trainer
+import org.kiji.modeling.framework.ModelExecutor
 import org.kiji.express.util.Resources.doAndClose
 
 @RunWith(classOf[JUnitRunner])

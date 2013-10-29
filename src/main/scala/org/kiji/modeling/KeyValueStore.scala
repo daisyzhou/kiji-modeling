@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling
+package org.kiji.modeling
 
 import org.apache.avro.generic.GenericRecord
 
@@ -26,12 +26,12 @@ import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.express.AvroValue
 import org.kiji.express.EntityId
-import org.kiji.express.modeling.impl.AvroKVRecordKeyValueStore
-import org.kiji.express.modeling.impl.AvroRecordKeyValueStore
-import org.kiji.express.modeling.impl.JavaToScalaValueConverter
-import org.kiji.express.modeling.impl.KijiTableKeyValueStore
-import org.kiji.express.modeling.impl.ScalaToJavaKeyConverter
-import org.kiji.express.modeling.impl.TextFileKeyValueStore
+import org.kiji.modeling.impl.AvroKVRecordKeyValueStore
+import org.kiji.modeling.impl.AvroRecordKeyValueStore
+import org.kiji.modeling.impl.JavaToScalaValueConverter
+import org.kiji.modeling.impl.KijiTableKeyValueStore
+import org.kiji.modeling.impl.ScalaToJavaKeyConverter
+import org.kiji.modeling.impl.TextFileKeyValueStore
 import org.kiji.mapreduce.kvstore.lib.{AvroKVRecordKeyValueStore => JAvroKVRecordKeyValueStore}
 import org.kiji.mapreduce.kvstore.lib.{AvroRecordKeyValueStore => JAvroRecordKeyValueStore}
 import org.kiji.mapreduce.kvstore.lib.{KijiTableKeyValueStore => JKijiTableKeyValueStore}
@@ -45,10 +45,10 @@ import org.kiji.mapreduce.kvstore.{KeyValueStoreReader => JKeyValueStoreReader}
  * system), and/or be used to pass data generated in one modeling workflow step to another.
  *
  * End-users can configure key-value stores for use in a modeling workflow through the JSON
- * configuration of a modeling workflow. See [[org.kiji.express.modeling.config.ModelDefinition]]
- * and [[org.kiji.express.modeling.config.ModelEnvironment]] for more information. Once
+ * configuration of a modeling workflow. See [[org.kiji.modeling.config.ModelDefinition]]
+ * and [[org.kiji.modeling.config.ModelEnvironment]] for more information. Once
  * configured, a key-value store can be obtained within implementations of modeling workflow
- * steps (like [[org.kiji.express.modeling.Extractor]] and [[org.kiji.express.modeling.Scorer]]
+ * steps (like [[org.kiji.modeling.Extractor]] and [[org.kiji.modeling.Scorer]]
  * by using the method `#keyValueStoreSpecs`.
  *
  * A KijiExpress key-value store is in an opened state when constructed,
@@ -58,8 +58,8 @@ import org.kiji.mapreduce.kvstore.{KeyValueStoreReader => JKeyValueStoreReader}
  *
  * Implementation-wise, a KijiExpress key-value store is Scala-friendly face on the Java
  * key-value stores provided by the KijiMR library. A KijiExpress key-value store implements
- * the traits [[org.kiji.express.modeling.impl.ScalaToJavaKeyConverter]] and
- * [[org.kiji.express.modeling.impl.JavaToScalaValueConverter]], which provide a means for
+ * the traits [[org.kiji.modeling.impl.ScalaToJavaKeyConverter]] and
+ * [[org.kiji.modeling.impl.JavaToScalaValueConverter]], which provide a means for
  * converting
  * keys specified as Scala types to equivalent Java types (used to access the underlying
  * KijiMR key-value store), and values specified as Java types to equivalent Scala types
@@ -77,7 +77,7 @@ import org.kiji.mapreduce.kvstore.{KeyValueStoreReader => JKeyValueStoreReader}
 @ApiAudience.Public
 @ApiStability.Experimental
 @Inheritance.Sealed
-abstract class KeyValueStore[K, V] protected[express] (
+abstract class KeyValueStore[K, V] protected[modeling] (
     javaKeyValueStoreReader: JKeyValueStoreReader[_,_])
     extends ScalaToJavaKeyConverter[K]
     with JavaToScalaValueConverter[V] {
@@ -88,7 +88,7 @@ abstract class KeyValueStore[K, V] protected[express] (
   /**
    * Closes all resources used by this key-value store.
    */
-  private[express] def close() {
+  private[modeling] def close() {
     // scalastyle:off null
     if (kvStoreReader != null) {
       kvStoreReader.close()
@@ -160,7 +160,7 @@ abstract class KeyValueStore[K, V] protected[express] (
 /**
  * A factory for key-value stores backed by specific KijiMR key-value store implementations.
  */
-private[express] object KeyValueStore {
+private[modeling] object KeyValueStore {
   /**
    * Creates a new KijiExpress key-value store backed by a KijiMR key-value store backed by a
    * Kiji table. Such a key-value store allows users to access the latest value in a column of a

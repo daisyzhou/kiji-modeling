@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.config
+package org.kiji.modeling.config
 
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
@@ -36,7 +36,7 @@ class ValidationException(
 
 object ValidationException {
 
-  private[express] def messageWithCauses(msg: String, causes: Seq[ValidationException]): String = {
+  private[modeling] def messageWithCauses(msg: String, causes: Seq[ValidationException]): String = {
     val causesMsg = causes
         .tail
         .foldLeft(causes.head.getMessage) { _ + "\n" + _.getMessage }

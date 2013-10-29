@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.lib
+package org.kiji.modeling.lib
 
 import cascading.tuple.Fields
 
@@ -25,18 +25,18 @@ import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.express.KijiSlice
-import org.kiji.express.modeling.Extractor
+import org.kiji.modeling.Extractor
 import org.kiji.express.util.Tuples
 
 /**
  * Base class for prebuilt extractors for performing simple selection tasks from a
  * [[org.kiji.express.KijiSlice]]. Currently three simple selection extractors are provided:
  * <ul>
- *   <li>[[org.kiji.express.modeling.lib.FirstValueExtractor]] -
+ *   <li>[[org.kiji.modeling.lib.FirstValueExtractor]] -
  *       Selects the first value of a slice.</li>
- *   <li>[[org.kiji.express.modeling.lib.LastValueExtractor]] -
+ *   <li>[[org.kiji.modeling.lib.LastValueExtractor]] -
  *       Selects the last value of a slice.</li>
- *   <li>[[org.kiji.express.modeling.lib.SliceExtractor]] -
+ *   <li>[[org.kiji.modeling.lib.SliceExtractor]] -
  *       Selects the entire slice and puts each cell into a sequence.</li>
  * </ul>
  *
@@ -73,7 +73,7 @@ sealed abstract class SelectorExtractor[R](
 @Inheritance.Sealed
 final class FirstValueExtractor
     extends SelectorExtractor[Any](FirstValueExtractor.selectFirstValue)
-private[express] object FirstValueExtractor {
+private[modeling] object FirstValueExtractor {
   def selectFirstValue(slice: KijiSlice[Any]): Any = slice.getFirstValue
 }
 
@@ -85,7 +85,7 @@ private[express] object FirstValueExtractor {
 @Inheritance.Sealed
 final class LastValueExtractor
     extends SelectorExtractor[Any](LastValueExtractor.selectLastValue)
-private[express] object LastValueExtractor {
+private[modeling] object LastValueExtractor {
   def selectLastValue(slice: KijiSlice[Any]): Any = slice.getLastValue
 }
 
@@ -98,7 +98,7 @@ private[express] object LastValueExtractor {
 @Inheritance.Sealed
 final class SliceExtractor
     extends SelectorExtractor[Seq[Any]](SliceExtractor.selectSlice)
-private[express] object SliceExtractor {
+private[modeling] object SliceExtractor {
   def selectSlice(slice: KijiSlice[Any]): Seq[Any] = {
     slice
         .cells

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.framework
+package org.kiji.modeling.framework
 
 import com.twitter.scalding.Args
 import com.twitter.scalding.Hdfs
@@ -30,19 +30,19 @@ import org.apache.hadoop.hbase.HBaseConfiguration
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
-import org.kiji.express.modeling.Preparer
-import org.kiji.express.modeling.ScoreProducerJobBuilder
-import org.kiji.express.modeling.Trainer
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.impl.ModelJobUtils
-import org.kiji.express.modeling.impl.ModelJobUtils.PhaseType
+import org.kiji.modeling.Preparer
+import org.kiji.modeling.ScoreProducerJobBuilder
+import org.kiji.modeling.Trainer
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.impl.ModelJobUtils
+import org.kiji.modeling.impl.ModelJobUtils.PhaseType
 
 /**
  * The ModelExecutor can be used to run valid combinations of the model lifecycle. Build the
  * ModelExecutor by providing it with the appropriate
- * [[org.kiji.express.modeling.config.ModelDefinition]] and
- * [[org.kiji.express.modeling.config.ModelEnvironment]] as follows:
+ * [[org.kiji.modeling.config.ModelDefinition]] and
+ * [[org.kiji.modeling.config.ModelEnvironment]] as follows:
  * {{{
  * val modelExecutor = ModelExecutor(modelDefinition, modelEnvironment)
  * }}}
@@ -81,8 +81,8 @@ final case class ModelExecutor(
   }
 
   /**
-   * Runs the prepare phase of the [[org.kiji.express.modeling.config.ModelDefinition]] provided
-   * to this [[org.kiji.express.modeling.framework.ModelExecutor]]. It is illegal to call this
+   * Runs the prepare phase of the [[org.kiji.modeling.config.ModelDefinition]] provided
+   * to this [[org.kiji.modeling.framework.ModelExecutor]]. It is illegal to call this
    * when the prepare phase is not defined.
    *
    * @param currentArgs are arguments you would like to pass to this run of the preparer (overrides
@@ -108,8 +108,8 @@ final case class ModelExecutor(
 
 
   /**
-   * Runs the train phase of the [[org.kiji.express.modeling.config.ModelDefinition]] provided to
-   * this [[org.kiji.express.modeling.framework.ModelExecutor]]. It is illegal to call this when the
+   * Runs the train phase of the [[org.kiji.modeling.config.ModelDefinition]] provided to
+   * this [[org.kiji.modeling.framework.ModelExecutor]]. It is illegal to call this when the
    * train phase is not defined.
    *
    * @param currentArgs are arguments you would like to pass to this run of the trainer (overrides
@@ -134,8 +134,8 @@ final case class ModelExecutor(
   }
 
   /**
-   * Runs the extract-score phase of the [[org.kiji.express.modeling.config.ModelDefinition]]
-   * provided to this [[org.kiji.express.modeling.framework.ModelExecutor]]. It is illegal to call
+   * Runs the extract-score phase of the [[org.kiji.modeling.config.ModelDefinition]]
+   * provided to this [[org.kiji.modeling.framework.ModelExecutor]]. It is illegal to call
    * this when the score phase is not defined.
    *
    * @param currentArgs are arguments you would like to pass to this run of the extractor/scorer
@@ -150,7 +150,7 @@ final case class ModelExecutor(
   }
 
   /**
-   * Runs all the phases defined by the [[org.kiji.express.modeling.config.ModelDefinition]].
+   * Runs all the phases defined by the [[org.kiji.modeling.config.ModelDefinition]].
    *
    * @param currentArgs are arguments you would like to pass to this run of model lifecycle
    *     (overrides the args set on the model lifecycle).

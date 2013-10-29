@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.lib
+package org.kiji.modeling.lib
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.control.Breaks.break
@@ -32,7 +32,7 @@ import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.express.KijiSlice
-import org.kiji.express.modeling.Trainer
+import org.kiji.modeling.Trainer
 import org.kiji.express.util.Resources.doAndClose
 
 /**
@@ -178,9 +178,9 @@ final case class LMTrainer() extends Trainer {
    * The outer iterative train method. This is the entry point into the trainer.
    *
    * @param input data sources used during the train phase. For more details, refer to the scaladocs
-   *    for [[org.kiji.express.modeling.lib.LMTrainer]].
+   *    for [[org.kiji.modeling.lib.LMTrainer]].
    * @param output data sources used during the train phase. For more details, refer to the
-   *    scaladocs for [[org.kiji.express.modeling.lib.LMTrainer]]
+   *    scaladocs for [[org.kiji.modeling.lib.LMTrainer]]
    * @return true if job succeeds, false otherwise.
    */
   override def train(input: Map[String, Source], output: Map[String, Source]): Boolean = {

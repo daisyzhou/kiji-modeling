@@ -17,17 +17,17 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling
+package org.kiji.modeling
 
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.hbase.HBaseConfiguration
 
-import org.kiji.express.modeling.config.KijiInputSpec
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.config.ScoreEnvironment
-import org.kiji.express.modeling.config.ValidationException
-import org.kiji.express.modeling.framework.ScoreProducer
+import org.kiji.modeling.config.KijiInputSpec
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.config.ScoreEnvironment
+import org.kiji.modeling.config.ValidationException
+import org.kiji.modeling.framework.ScoreProducer
 import org.kiji.mapreduce.KijiMapReduceJob
 import org.kiji.mapreduce.output.MapReduceJobOutputs
 import org.kiji.mapreduce.produce.KijiProduceJobBuilder

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.framework
+package org.kiji.modeling.framework
 
 import scala.collection.JavaConverters._
 
@@ -44,34 +44,34 @@ import org.kiji.express.avro.AvroScoreEnvironment
 import org.kiji.express.avro.AvroSequenceFileSourceSpec
 import org.kiji.express.avro.AvroTextSourceSpec
 import org.kiji.express.avro.AvroTrainEnvironment
-import org.kiji.express.modeling.Evaluator
-import org.kiji.express.modeling.Extractor
-import org.kiji.express.modeling.Preparer
-import org.kiji.express.modeling.Scorer
-import org.kiji.express.modeling.Trainer
-import org.kiji.express.modeling.config.AndFilter
-import org.kiji.express.modeling.config.ColumnRangeFilter
-import org.kiji.express.modeling.config.EvaluateEnvironment
-import org.kiji.express.modeling.config.ExpressColumnFilter
-import org.kiji.express.modeling.config.ExpressColumnRequest
-import org.kiji.express.modeling.config.ExpressDataRequest
-import org.kiji.express.modeling.config.FieldBinding
-import org.kiji.express.modeling.config.InputSpec
-import org.kiji.express.modeling.config.KeyValueStoreSpec
-import org.kiji.express.modeling.config.KijiInputSpec
-import org.kiji.express.modeling.config.KijiOutputSpec
-import org.kiji.express.modeling.config.KijiSingleColumnOutputSpec
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.config.OrFilter
-import org.kiji.express.modeling.config.OutputSpec
-import org.kiji.express.modeling.config.PrepareEnvironment
-import org.kiji.express.modeling.config.RegexQualifierFilter
-import org.kiji.express.modeling.config.ScoreEnvironment
-import org.kiji.express.modeling.config.SequenceFileSourceSpec
-import org.kiji.express.modeling.config.TextSourceSpec
-import org.kiji.express.modeling.config.TrainEnvironment
-import org.kiji.express.modeling.config.ValidationException
+import org.kiji.modeling.Evaluator
+import org.kiji.modeling.Extractor
+import org.kiji.modeling.Preparer
+import org.kiji.modeling.Scorer
+import org.kiji.modeling.Trainer
+import org.kiji.modeling.config.AndFilter
+import org.kiji.modeling.config.ColumnRangeFilter
+import org.kiji.modeling.config.EvaluateEnvironment
+import org.kiji.modeling.config.ExpressColumnFilter
+import org.kiji.modeling.config.ExpressColumnRequest
+import org.kiji.modeling.config.ExpressDataRequest
+import org.kiji.modeling.config.FieldBinding
+import org.kiji.modeling.config.InputSpec
+import org.kiji.modeling.config.KeyValueStoreSpec
+import org.kiji.modeling.config.KijiInputSpec
+import org.kiji.modeling.config.KijiOutputSpec
+import org.kiji.modeling.config.KijiSingleColumnOutputSpec
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.config.OrFilter
+import org.kiji.modeling.config.OutputSpec
+import org.kiji.modeling.config.PrepareEnvironment
+import org.kiji.modeling.config.RegexQualifierFilter
+import org.kiji.modeling.config.ScoreEnvironment
+import org.kiji.modeling.config.SequenceFileSourceSpec
+import org.kiji.modeling.config.TextSourceSpec
+import org.kiji.modeling.config.TrainEnvironment
+import org.kiji.modeling.config.ValidationException
 import org.kiji.schema.util.ProtocolVersion
 
 /**
@@ -435,7 +435,7 @@ object ModelConverters {
    * Builds a map of input specifications from its avro record representation.
    *
    * @param inputSpecs a map of avro input specifications to build from.
-   * @return a map of [[org.kiji.express.modeling.config.InputSpec]].
+   * @return a map of [[org.kiji.modeling.config.InputSpec]].
    */
   def inputSpecsFromAvro(inputSpecs: java.util.Map[String, AvroInputSpec]):
       Map[String, InputSpec] = {
@@ -486,7 +486,7 @@ object ModelConverters {
   }
 
   /**
-   * Converts a map of [[org.kiji.express.modeling.config.InputSpec]] to its avro representation.
+   * Converts a map of [[org.kiji.modeling.config.InputSpec]] to its avro representation.
    *
    * @param inputSpecs to convert.
    * @return a Java map of avro records.
@@ -548,7 +548,7 @@ object ModelConverters {
    * Builds a map of output specifications from its avro record representation.
    *
    * @param outputSpecs a map of avro output specifications to build from.
-   * @return a map of [[org.kiji.express.modeling.config.OutputSpec]].
+   * @return a map of [[org.kiji.modeling.config.OutputSpec]].
    */
   def outputSpecsFromAvro(outputSpecs: java.util.Map[String, AvroOutputSpec]):
       Map[String, OutputSpec] = {
@@ -604,7 +604,7 @@ object ModelConverters {
   }
 
   /**
-   * Converts a map of [[org.kiji.express.modeling.config.OutputSpec]] to its avro representation.
+   * Converts a map of [[org.kiji.modeling.config.OutputSpec]] to its avro representation.
    *
    * @param outputSpecs to convert.
    * @return a Java map of avro records.
@@ -904,7 +904,7 @@ object ModelConverters {
    * @tparam T is the type of the phase class.
    * @return the phase implementation class.
    */
-  private[express] def getClassForPhase[T](phaseImplName: String, phase: Class[T]): Class[T] = {
+  private[modeling] def getClassForPhase[T](phaseImplName: String, phase: Class[T]): Class[T] = {
     val checkClass: Class[T] = try {
       new java.lang.Thread()
           .getContextClassLoader
@@ -945,7 +945,7 @@ object ModelConverters {
    * @param extractorClass to pack in the resulting Avro record.
    * @return An Avro phase definition record.
    */
-  private[express] def phaseDefinitionToAvro(
+  private[modeling] def phaseDefinitionToAvro(
       phaseClass: Option[Class[_]],
       extractorClass: Option[Class[_]]): AvroPhaseDefinition = {
     // scalastyle:off null

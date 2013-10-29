@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling
+package org.kiji.modeling
 
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite

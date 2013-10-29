@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
-import org.kiji.express.modeling.KeyValueStore
+import org.kiji.modeling.KeyValueStore
 
 class TestKeyValueStores extends KeyValueStores
 

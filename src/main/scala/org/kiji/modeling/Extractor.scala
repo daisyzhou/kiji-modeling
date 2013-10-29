@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling
+package org.kiji.modeling
 
 import cascading.tuple.Fields
 import com.twitter.scalding.FieldConversions
@@ -28,8 +28,8 @@ import com.twitter.scalding.TupleSetter
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
-import org.kiji.express.modeling.impl.CommandLineArgs
-import org.kiji.express.modeling.impl.KeyValueStores
+import org.kiji.modeling.impl.CommandLineArgs
+import org.kiji.modeling.impl.KeyValueStores
 
 /**
  * Encapsulates both the computation and the data (addressed by field names) required for the

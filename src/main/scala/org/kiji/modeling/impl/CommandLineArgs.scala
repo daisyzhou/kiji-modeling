@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import com.twitter.scalding.Args
 
@@ -51,7 +51,7 @@ trait CommandLineArgs {
    *
    * @param otherArgs to add to the current set of arguments.
    */
-  private[express] def addArgs(otherArgs: Args) {
+  private[modeling] def addArgs(otherArgs: Args) {
     otherArgs
         .m
         .iterator
@@ -63,5 +63,5 @@ trait CommandLineArgs {
    *
    * @param cliString containing command-line arguments to add.
    */
-  private[express] def addArgs(cliString: String) { addArgs(Args(cliString)) }
+  private[modeling] def addArgs(cliString: String) { addArgs(Args(cliString)) }
 }

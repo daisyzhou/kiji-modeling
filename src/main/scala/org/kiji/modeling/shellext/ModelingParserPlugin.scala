@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.shellext
+package org.kiji.modeling.shellext
 
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
@@ -33,7 +33,7 @@ import org.kiji.schema.shell.spi.ParserPlugin
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] sealed trait LifeCyclePhase
+private[modeling] sealed trait LifeCyclePhase
 
 /**
  * A singleton instance representing the extract phase of a modeling lifecycle.
@@ -41,7 +41,7 @@ private[express] sealed trait LifeCyclePhase
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] object ExtractPhase extends LifeCyclePhase
+private[modeling] object ExtractPhase extends LifeCyclePhase
 
 /**
  * A singleton instance representing the score phase of a modeling lifecycle.
@@ -49,7 +49,7 @@ private[express] object ExtractPhase extends LifeCyclePhase
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] object ScorePhase extends LifeCyclePhase
+private[modeling] object ScorePhase extends LifeCyclePhase
 
 /**
  * Identifies types that specify how different configurations for a modeling lifecycle (such
@@ -58,7 +58,7 @@ private[express] object ScorePhase extends LifeCyclePhase
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] sealed trait ConfigureVia
+private[modeling] sealed trait ConfigureVia
 
 /**
  * Specifies how to load different conigurations for a modeling lifecycle from a file.
@@ -66,18 +66,18 @@ private[express] sealed trait ConfigureVia
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] case class ConfigureViaFile(val filePath: String) extends ConfigureVia
+private[modeling] case class ConfigureViaFile(val filePath: String) extends ConfigureVia
 
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] case class JobsConfiguration(
+private[modeling] case class JobsConfiguration(
     val libjars: List[String],
     val configurationProperties: Map[String, String]
 )
 /**
  * Parses statements that specify how to run modeling lifecycle phases. The result of parsing a
- * complete statement is a [[org.kiji.express.shellext.LifecycleExecutionCommand]] capable of
+ * complete statement is a [[org.kiji.modeling.shellext.LifecycleExecutionCommand]] capable of
  * executing a series of modeling lifecycle phases.
  *
  * @param env that schema shell statements should be executed in.

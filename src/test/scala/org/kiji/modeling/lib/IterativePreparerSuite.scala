@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.lib
+package org.kiji.modeling.lib
 
 import com.twitter.scalding.Hdfs
 import com.twitter.scalding.Source
@@ -27,16 +27,16 @@ import org.scalatest.junit.JUnitRunner
 
 import org.kiji.express.KijiSlice
 import org.kiji.express.KijiSuite
-import org.kiji.express.modeling.Preparer
-import org.kiji.express.modeling.config.ExpressColumnRequest
-import org.kiji.express.modeling.config.ExpressDataRequest
-import org.kiji.express.modeling.config.FieldBinding
-import org.kiji.express.modeling.config.KijiInputSpec
-import org.kiji.express.modeling.config.KijiOutputSpec
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.config.PrepareEnvironment
-import org.kiji.express.modeling.framework.ModelExecutor
+import org.kiji.modeling.Preparer
+import org.kiji.modeling.config.ExpressColumnRequest
+import org.kiji.modeling.config.ExpressDataRequest
+import org.kiji.modeling.config.FieldBinding
+import org.kiji.modeling.config.KijiInputSpec
+import org.kiji.modeling.config.KijiOutputSpec
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.config.PrepareEnvironment
+import org.kiji.modeling.framework.ModelExecutor
 import org.kiji.express.util.Resources.doAndClose
 import org.kiji.express.util.Resources.withKijiTable
 import org.kiji.schema.Kiji

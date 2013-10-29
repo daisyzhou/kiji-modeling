@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import org.apache.avro.generic.GenericRecord
 
@@ -26,7 +26,7 @@ import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.express.AvroValue
 import org.kiji.express.EntityId
-import org.kiji.express.modeling.KeyValueStore
+import org.kiji.modeling.KeyValueStore
 import org.kiji.mapreduce.kvstore.{ KeyValueStoreReader => JKeyValueStoreReader }
 import org.kiji.schema.KijiRowKeyComponents
 
@@ -40,7 +40,7 @@ import org.kiji.schema.KijiRowKeyComponents
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] final class KijiTableKeyValueStore[V](
+private[modeling] final class KijiTableKeyValueStore[V](
     kvStoreReader: JKeyValueStoreReader[_ <: KijiRowKeyComponents, _ <: Any])
     extends KeyValueStore[EntityId, V](kvStoreReader)
     with EntityIdScalaToJavaKeyConverter
@@ -57,7 +57,7 @@ private[express] final class KijiTableKeyValueStore[V](
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] final class AvroRecordKeyValueStore[K](
+private[modeling] final class AvroRecordKeyValueStore[K](
     kvStoreReader: JKeyValueStoreReader[_ <: Any, _ <: GenericRecord])
     extends KeyValueStore[K, AvroValue](kvStoreReader)
     with AvroScalaToJavaKeyConverter[K]
@@ -75,7 +75,7 @@ private[express] final class AvroRecordKeyValueStore[K](
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] final class AvroKVRecordKeyValueStore[K,V](
+private[modeling] final class AvroKVRecordKeyValueStore[K,V](
     kvStoreReader: JKeyValueStoreReader[_ <: Any, _ <: Any])
     extends KeyValueStore[K, V](kvStoreReader)
     with AvroScalaToJavaKeyConverter[K]
@@ -90,7 +90,7 @@ private[express] final class AvroKVRecordKeyValueStore[K,V](
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] final class TextFileKeyValueStore(
+private[modeling] final class TextFileKeyValueStore(
     kvStoreReader: JKeyValueStoreReader[String, String])
     extends KeyValueStore[String, String](kvStoreReader) {
   protected override def keyConversion(keyWithScalaType: String): Any = keyWithScalaType

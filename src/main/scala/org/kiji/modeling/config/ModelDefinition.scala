@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.config
+package org.kiji.modeling.config
 
 import scala.io.Source
 
@@ -25,12 +25,12 @@ import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.express.avro.AvroModelDefinition
-import org.kiji.express.modeling.Evaluator
-import org.kiji.express.modeling.Extractor
-import org.kiji.express.modeling.Preparer
-import org.kiji.express.modeling.Scorer
-import org.kiji.express.modeling.Trainer
-import org.kiji.express.modeling.framework.ModelConverters
+import org.kiji.modeling.Evaluator
+import org.kiji.modeling.Extractor
+import org.kiji.modeling.Preparer
+import org.kiji.modeling.Scorer
+import org.kiji.modeling.Trainer
+import org.kiji.modeling.framework.ModelConverters
 import org.kiji.express.util.Resources.doAndClose
 import org.kiji.schema.util.FromJson
 import org.kiji.schema.util.KijiNameValidator
@@ -59,13 +59,13 @@ import org.kiji.schema.util.ToJson
  * {
  *   "name": "name",
  *   "version": "1.0.0",
- *   "preparerClass": "org.kiji.express.modeling.config.MyPreparer",
- *   "trainerClass": "org.kiji.express.modeling.config.MyTrainer",
- *   "evaluatorClass": "org.kiji.express.modeling.config.MyEvaluator",
+ *   "preparerClass": "org.kiji.modeling.config.MyPreparer",
+ *   "trainerClass": "org.kiji.modeling.config.MyTrainer",
+ *   "evaluatorClass": "org.kiji.modeling.config.MyEvaluator",
  *   "scorerClass": {
  *     "org.kiji.express.avro.AvroPhaseDefinition": {
  *       "extractor_class": null,
- *       "phase_class": "org.kiji.express.modeling.config.MyScorer"
+ *       "phase_class": "org.kiji.modeling.config.MyScorer"
  *     }
  *   },
  *   "protocol_version": "model_definition-0.2.0"
@@ -103,7 +103,7 @@ final case class ModelDefinition(
     scoreExtractorClass: Option[java.lang.Class[_ <: Extractor]] = None,
     scorerClass: Option[java.lang.Class[_ <: Scorer]] = None,
     evaluatorClass: Option[java.lang.Class[_ <: Evaluator]] = None,
-    private[express] val protocolVersion: ProtocolVersion =
+    private[modeling] val protocolVersion: ProtocolVersion =
         ModelDefinition.CURRENT_MODEL_DEF_VER) {
   // Ensure that all fields set for this model definition are valid.
   ModelDefinition.validateModelDefinition(this)
@@ -172,7 +172,7 @@ object ModelDefinition {
   val VERSION_REGEX: String = "[0-9]+(.[0-9]+)*"
 
   /** Message to show the user when there is an error validating their model definition. */
-  private[express] val VALIDATION_MESSAGE: String = "One or more errors occurred while " +
+  private[modeling] val VALIDATION_MESSAGE: String = "One or more errors occurred while " +
       "validating your model definition. Please correct the problems in your model definition " +
       "and try again."
 
@@ -234,7 +234,7 @@ object ModelDefinition {
    * @param modelDefinition to validate.
    * @throws a ValidationException if an invalid combination of states is specified.
    */
-  private[express] def validatePhases(
+  private[modeling] def validatePhases(
       modelDefinition: ModelDefinition): Seq[ValidationException] = {
     val noPhases =
         if (
@@ -289,7 +289,7 @@ object ModelDefinition {
    * @return an optional ValidationException if there are errors encountered while validating the
    *     protocol version.
    */
-  private[express] def validateProtocolVersion(
+  private[modeling] def validateProtocolVersion(
       protocolVersion: ProtocolVersion): Option[ValidationException] = {
     if (MAX_MODEL_DEF_VER.compareTo(protocolVersion) < 0) {
       val error = "\"%s\" is the maximum protocol version supported. ".format(MAX_MODEL_DEF_VER) +
@@ -311,7 +311,7 @@ object ModelDefinition {
    * @return an optional ValidationException if there are errors encountered while validating the
    *     name of the model definition.
    */
-  private[express] def validateName(name: String): Option[ValidationException] = {
+  private[modeling] def validateName(name: String): Option[ValidationException] = {
     if (name.isEmpty) {
       val error = "The name of the model definition cannot be the empty string."
       Some(new ValidationException(error))
@@ -331,7 +331,7 @@ object ModelDefinition {
    * @return an optional ValidationException if there are errors encountered while validating the
    *     version string.
    */
-  private[express] def validateVersion(version: String): Option[ValidationException] = {
+  private[modeling] def validateVersion(version: String): Option[ValidationException] = {
     if (!version.matches(VERSION_REGEX)) {
       val error = "Model definition version strings must match the regex " +
           "\"%s\" (1.0.0 would be valid).".format(VERSION_REGEX)

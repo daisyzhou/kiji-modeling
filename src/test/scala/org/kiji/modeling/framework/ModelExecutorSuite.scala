@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.framework
+package org.kiji.modeling.framework
 
 import com.twitter.scalding.Hdfs
 import com.twitter.scalding.Source
@@ -29,21 +29,21 @@ import org.scalatest.junit.JUnitRunner
 import org.kiji.express.EntityId
 import org.kiji.express.KijiSlice
 import org.kiji.express.KijiSuite
-import org.kiji.express.modeling.Preparer
-import org.kiji.express.modeling.Trainer
-import org.kiji.express.modeling.config.ExpressColumnRequest
-import org.kiji.express.modeling.config.ExpressDataRequest
-import org.kiji.express.modeling.config.FieldBinding
-import org.kiji.express.modeling.config.KeyValueStoreSpec
-import org.kiji.express.modeling.config.KijiInputSpec
-import org.kiji.express.modeling.config.KijiOutputSpec
-import org.kiji.express.modeling.config.KijiSingleColumnOutputSpec
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.config.PrepareEnvironment
-import org.kiji.express.modeling.config.ScoreEnvironment
-import org.kiji.express.modeling.config.TrainEnvironment
-import org.kiji.express.modeling.impl.KeyValueStoreImplSuite
+import org.kiji.modeling.Preparer
+import org.kiji.modeling.Trainer
+import org.kiji.modeling.config.ExpressColumnRequest
+import org.kiji.modeling.config.ExpressDataRequest
+import org.kiji.modeling.config.FieldBinding
+import org.kiji.modeling.config.KeyValueStoreSpec
+import org.kiji.modeling.config.KijiInputSpec
+import org.kiji.modeling.config.KijiOutputSpec
+import org.kiji.modeling.config.KijiSingleColumnOutputSpec
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.config.PrepareEnvironment
+import org.kiji.modeling.config.ScoreEnvironment
+import org.kiji.modeling.config.TrainEnvironment
+import org.kiji.modeling.impl.KeyValueStoreImplSuite
 import org.kiji.express.util.Resources.doAndClose
 import org.kiji.express.util.Resources.doAndRelease
 import org.kiji.schema.Kiji

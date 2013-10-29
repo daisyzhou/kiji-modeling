@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import org.kiji.annotations.{Inheritance, ApiAudience, ApiStability}
-import org.kiji.express.modeling.KeyValueStore
+import org.kiji.modeling.KeyValueStore
 
 /**
  * Provides access to key-value stores used by the modeling SPI workflow phases (like Extract and
@@ -43,7 +43,7 @@ trait KeyValueStores {
    *
    * @return the key-value stores accessible to this phase of the model workflow.
    */
-  final private[express] def keyValueStores: Map[String, KeyValueStore[_, _]] = {
+  final private[modeling] def keyValueStores: Map[String, KeyValueStore[_, _]] = {
     _keyValueStores.getOrElse {
       throw new IllegalStateException("This model phase has not been initialized properly. "
           + "Its key-value stores haven't been loaded yet.")
@@ -51,14 +51,14 @@ trait KeyValueStores {
   }
 
   /**
-   * Gets the [[org.kiji.express.modeling.KeyValueStore]] associated with the specified store name.
+   * Gets the [[org.kiji.modeling.KeyValueStore]] associated with the specified store name.
    *
    * @param name associated with the store.
    * @tparam K is the type of the keys.
    * @tparam V is the type of the values.
    * @return the key-value store associated with the specified name.
    */
-  final protected[express] def keyValueStore[K, V](name: String): KeyValueStore[K, V] = {
+  final protected[modeling] def keyValueStore[K, V](name: String): KeyValueStore[K, V] = {
     val stores: Map[String, KeyValueStore[_, _]] = _keyValueStores.getOrElse {
       throw new IllegalStateException("This model phase has not been initialized properly. "
         + "Its key-value stores haven't been loaded yet.")
@@ -72,7 +72,7 @@ trait KeyValueStores {
    *
    * @param value to set this phase's key-value stores to.
    */
-  private[express] def keyValueStores_=(value: Map[String, KeyValueStore[_, _]]) {
+  private[modeling] def keyValueStores_=(value: Map[String, KeyValueStore[_, _]]) {
     _keyValueStores = Some(value)
   }
 }

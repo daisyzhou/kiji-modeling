@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.tool
+package org.kiji.tool
 
 import com.twitter.scalding.Args
 import com.twitter.scalding.Mode
@@ -29,9 +29,9 @@ import org.apache.hadoop.hbase.HBaseConfiguration
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.framework.ModelExecutor
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.framework.ModelExecutor
 
 /**
  * <p>

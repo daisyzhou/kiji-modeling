@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.tool
+package org.kiji.tool
 
 import org.apache.hadoop.conf.Configured
 import org.apache.hadoop.hbase.HBaseConfiguration
@@ -31,7 +31,7 @@ import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.common.flags.Flag
 import org.kiji.common.flags.FlagParser
-import org.kiji.express.modeling.ScoreProducerJobBuilder
+import org.kiji.modeling.ScoreProducerJobBuilder
 
 
 /**

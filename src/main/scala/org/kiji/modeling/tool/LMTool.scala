@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.tool
+package org.kiji.tool
 
 import com.twitter.scalding.Args
 import com.twitter.scalding.Mode
@@ -29,16 +29,16 @@ import org.apache.hadoop.util.ToolRunner
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
-import org.kiji.express.modeling.config.ExpressColumnRequest
-import org.kiji.express.modeling.config.ExpressDataRequest
-import org.kiji.express.modeling.config.FieldBinding
-import org.kiji.express.modeling.config.KijiInputSpec
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.config.TextSourceSpec
-import org.kiji.express.modeling.config.TrainEnvironment
-import org.kiji.express.modeling.framework.ModelExecutor
-import org.kiji.express.modeling.lib.LMTrainer
+import org.kiji.modeling.config.ExpressColumnRequest
+import org.kiji.modeling.config.ExpressDataRequest
+import org.kiji.modeling.config.FieldBinding
+import org.kiji.modeling.config.KijiInputSpec
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.config.TextSourceSpec
+import org.kiji.modeling.config.TrainEnvironment
+import org.kiji.modeling.framework.ModelExecutor
+import org.kiji.modeling.lib.LMTrainer
 
 @ApiAudience.Public
 @ApiStability.Experimental

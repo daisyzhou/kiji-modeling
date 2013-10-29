@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.config
+package org.kiji.modeling.config
 
 import com.twitter.scalding.Source
 import org.junit.runner.RunWith
@@ -25,14 +25,14 @@ import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
 import org.kiji.express.avro.AvroModelDefinition
-import org.kiji.express.modeling.DistanceFn
-import org.kiji.express.modeling.Evaluator
-import org.kiji.express.modeling.ExtractFn
-import org.kiji.express.modeling.Extractor
-import org.kiji.express.modeling.Preparer
-import org.kiji.express.modeling.ScoreFn
-import org.kiji.express.modeling.Scorer
-import org.kiji.express.modeling.Trainer
+import org.kiji.modeling.DistanceFn
+import org.kiji.modeling.Evaluator
+import org.kiji.modeling.ExtractFn
+import org.kiji.modeling.Extractor
+import org.kiji.modeling.Preparer
+import org.kiji.modeling.ScoreFn
+import org.kiji.modeling.Scorer
+import org.kiji.modeling.Trainer
 import org.kiji.express.util.Resources.resourceAsString
 import org.kiji.schema.util.FromJson
 import org.kiji.schema.util.ToJson

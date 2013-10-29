@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling
+package org.kiji.modeling
 
 import com.twitter.scalding.Args
 import com.twitter.scalding.Source
@@ -27,8 +27,9 @@ import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.express.flow.KijiJob
-import org.kiji.express.modeling.impl.CommandLineArgs
-import org.kiji.express.modeling.impl.KeyValueStores
+import org.kiji.modeling.impl.CommandLineArgs
+import org.kiji.modeling.impl.KeyValueStores
+import org.kiji.modeling.framework.ModelPipeConversions
 
 // TODO(EXP-167): Update documentation to include an iterative example.
 /**
@@ -38,7 +39,7 @@ import org.kiji.express.modeling.impl.KeyValueStores
  *
  * To define a custom train phase, override the train method of the trainer trait. This method takes
  * as parameters already configured input and output data sources. Both input and output
- * configurations are stored in a [[org.kiji.express.modeling.config.ModelEnvironment]]. For
+ * configurations are stored in a [[org.kiji.modeling.config.ModelEnvironment]]. For
  * example:
  * {{{
  *   class MyTrainer extends Trainer {
@@ -69,7 +70,7 @@ trait Trainer
   /**
    * Override this class to implement a MapReduce flow for the train phase.
    */
-  abstract class TrainerJob extends KijiJob(Args(Nil))
+  abstract class TrainerJob extends KijiJob(Args(Nil)) with ModelPipeConversions
 
   /**
    * Used to define the computation required for the Train phase of the model lifecycle.

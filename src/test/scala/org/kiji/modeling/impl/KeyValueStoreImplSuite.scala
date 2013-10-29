@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import scala.collection.JavaConverters.seqAsJavaListConverter
 
@@ -37,7 +37,7 @@ import org.scalatest.junit.JUnitRunner
 import org.kiji.express.AvroRecord
 import org.kiji.express.EntityId
 import org.kiji.express.KijiSuite
-import org.kiji.express.modeling.KeyValueStore
+import org.kiji.modeling.KeyValueStore
 import org.kiji.express.util.Resources._
 import org.kiji.mapreduce.kvstore.lib.{AvroKVRecordKeyValueStore => JAvroKVRecordKeyValueStore}
 import org.kiji.mapreduce.kvstore.lib.{AvroRecordKeyValueStore => JAvroRecordKeyValueStore}
@@ -169,7 +169,7 @@ object KeyValueStoreImplSuite {
    *
    * @return the path to the file written.
    */
-  private[express] def generateAvroKVRecordKeyValueStore(): Path = {
+  private[modeling] def generateAvroKVRecordKeyValueStore(): Path = {
     // Build the schema associated with this key-value store.
     // scalastyle:off null
     val writerSchema: Schema = {
@@ -307,7 +307,7 @@ object KeyValueStoreImplSuite {
    *
    * @return the path to the file written.
    */
-  private[express] def generateTextFileKeyValueStore(): Path = {
+  private[modeling] def generateTextFileKeyValueStore(): Path = {
     val file: File = File.createTempFile("generic-csv", ".txt")
     doAndClose(new PrintWriter(file, "UTF-8")) { fileWriter =>
       fileWriter.println("key1,value1")

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.framework
+package org.kiji.modeling.framework
 
 import scala.collection.JavaConverters._
 
@@ -29,16 +29,16 @@ import org.kiji.annotations.Inheritance
 import org.kiji.express.EntityId
 import org.kiji.express.KijiSlice
 import org.kiji.express.flow.framework.KijiScheme
-import org.kiji.express.modeling.ExtractFn
-import org.kiji.express.modeling.Extractor
-import org.kiji.express.modeling.config.KijiInputSpec
-import org.kiji.express.modeling.config.KeyValueStoreSpec
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.impl.ModelJobUtils
-import org.kiji.express.modeling.impl.ModelJobUtils.PhaseType.SCORE
-import org.kiji.express.modeling.ScoreFn
-import org.kiji.express.modeling.Scorer
+import org.kiji.modeling.ExtractFn
+import org.kiji.modeling.Extractor
+import org.kiji.modeling.config.KijiInputSpec
+import org.kiji.modeling.config.KeyValueStoreSpec
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.impl.ModelJobUtils
+import org.kiji.modeling.impl.ModelJobUtils.PhaseType.SCORE
+import org.kiji.modeling.ScoreFn
+import org.kiji.modeling.Scorer
 import org.kiji.express.util.GenericRowDataConverter
 import org.kiji.express.util.Tuples
 import org.kiji.mapreduce.KijiContext
@@ -51,7 +51,7 @@ import org.kiji.schema.KijiRowData
 import org.kiji.schema.KijiURI
 
 /**
- * A producer for running [[org.kiji.express.modeling.config.ModelDefinition]]s.
+ * A producer for running [[org.kiji.modeling.config.ModelDefinition]]s.
  *
  * This producer executes the score phase of a model. The model that this producer will run is
  * loaded from the json configuration strings stored in configuration keys:
@@ -111,8 +111,8 @@ final class ScoreProducer
    * Sets the Configuration for this KijiProducer to use. This function is guaranteed to be called
    * immediately after instantiation.
    *
-   * This method loads a [[org.kiji.express.modeling.config.ModelDefinition]] and a
-   * [[org.kiji.express.modeling.config.ModelEnvironment]] for ScoreProducer to use.
+   * This method loads a [[org.kiji.modeling.config.ModelDefinition]] and a
+   * [[org.kiji.modeling.config.ModelEnvironment]] for ScoreProducer to use.
    *
    * @param conf object that this producer should use.
    */
@@ -336,13 +336,13 @@ final class ScoreProducer
 object ScoreProducer {
   /**
    * Configuration key addressing the JSON description of a
-   * [[org.kiji.express.modeling.config.ModelDefinition]].
+   * [[org.kiji.modeling.config.ModelDefinition]].
    */
   val modelDefinitionConfKey: String = "org.kiji.express.model.definition"
 
   /**
    * Configuration key addressing the JSON configuration of a
-   * [[org.kiji.express.modeling.config.ModelEnvironment]].
+   * [[org.kiji.modeling.config.ModelEnvironment]].
    */
   val modelEnvironmentConfKey: String = "org.kiji.express.model.environment"
 }

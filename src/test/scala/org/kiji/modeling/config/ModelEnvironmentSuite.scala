@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.config
+package org.kiji.modeling.config
 
 import scala.collection.JavaConverters.seqAsJavaListConverter
 
@@ -31,7 +31,7 @@ import org.kiji.express.avro.AvroDataRequest
 import org.kiji.express.avro.AvroFilter
 import org.kiji.express.avro.AvroModelEnvironment
 import org.kiji.express.avro.AvroRegexQualifierFilter
-import org.kiji.express.modeling.framework.ModelConverters
+import org.kiji.modeling.framework.ModelConverters
 import org.kiji.express.util.Resources.resourceAsString
 import org.kiji.schema.KijiColumnName
 import org.kiji.schema.KijiDataRequest

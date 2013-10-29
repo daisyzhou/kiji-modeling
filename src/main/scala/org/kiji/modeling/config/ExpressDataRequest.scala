@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.config
+package org.kiji.modeling.config
 
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
@@ -44,7 +44,7 @@ final case class ExpressDataRequest(
    *
    * @return the requested Kiji data request.
    */
-  private[express] def toKijiDataRequest: KijiDataRequest = {
+  private[modeling] def toKijiDataRequest: KijiDataRequest = {
     val builder = KijiDataRequest.builder().withTimeRange(minTimestamp, maxTimestamp)
     columnRequests.foreach { colRequest: ExpressColumnRequest =>
       if (colRequest.filter.isDefined) {

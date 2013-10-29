@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.lib
+package org.kiji.modeling.lib
 
 import cascading.tuple.Fields
 import org.junit.runner.RunWith

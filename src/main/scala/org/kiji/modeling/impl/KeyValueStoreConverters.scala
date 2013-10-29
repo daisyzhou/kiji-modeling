@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import scala.collection.JavaConverters.seqAsJavaListConverter
 
@@ -41,7 +41,7 @@ import org.kiji.schema.KijiRowKeyComponents
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] trait ScalaToJavaKeyConverter[K] {
+private[modeling] trait ScalaToJavaKeyConverter[K] {
   /**
    * Converts a key specified as a Scala type to an equivalent key as a Java type compatible with
    * the KijiMR key-value store API.
@@ -64,7 +64,7 @@ private[express] trait ScalaToJavaKeyConverter[K] {
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] trait JavaToScalaValueConverter[V] {
+private[modeling] trait JavaToScalaValueConverter[V] {
   /**
    * Converts a value specified as a Java type to an equivalent value as a native Scala type.
    *
@@ -81,7 +81,7 @@ private[express] trait JavaToScalaValueConverter[V] {
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] trait EntityIdScalaToJavaKeyConverter
+private[modeling] trait EntityIdScalaToJavaKeyConverter
     extends ScalaToJavaKeyConverter[EntityId] {
   /**
    * Converts a sequence of entity id components to an instance of `KijiRowKeyComponents`,
@@ -111,7 +111,7 @@ private[express] trait EntityIdScalaToJavaKeyConverter
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] trait AvroScalaToJavaKeyConverter[K] extends ScalaToJavaKeyConverter[K] {
+private[modeling] trait AvroScalaToJavaKeyConverter[K] extends ScalaToJavaKeyConverter[K] {
   /**
    * Converts a key specified as a Scala/KijiExpress type to an equivalent key with type
    * compatible with the Java Avro API.
@@ -132,7 +132,7 @@ private[express] trait AvroScalaToJavaKeyConverter[K] extends ScalaToJavaKeyConv
 @ApiAudience.Private
 @ApiStability.Experimental
 @Inheritance.Sealed
-private[express] trait AvroJavaToScalaValueConverter[V] extends JavaToScalaValueConverter[V] {
+private[modeling] trait AvroJavaToScalaValueConverter[V] extends JavaToScalaValueConverter[V] {
   /**
    * Converts a value specified as a Java/Avro type to an equivalent value with a native Scala
    * type.

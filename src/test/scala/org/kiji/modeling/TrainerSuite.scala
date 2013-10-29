@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling
+package org.kiji.modeling
 
 import com.twitter.scalding.Source
 import org.junit.runner.RunWith

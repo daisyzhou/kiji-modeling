@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling
+package org.kiji.modeling
 
 import com.twitter.scalding.Args
 import com.twitter.scalding.Source
@@ -27,8 +27,8 @@ import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
 import org.kiji.express.flow.KijiJob
-import org.kiji.express.modeling.impl.CommandLineArgs
-import org.kiji.express.modeling.impl.KeyValueStores
+import org.kiji.modeling.impl.CommandLineArgs
+import org.kiji.modeling.impl.KeyValueStores
 
 /**
  * Represents the Prepare phase of a model lifecycle. Users should extend this trait when defining a
@@ -37,7 +37,7 @@ import org.kiji.express.modeling.impl.KeyValueStores
  *
  * To define a custom prepare phase, the prepare method of the must be overridden. This method takes
  * as parameters already configured input and output data sources. Both input and output
- * configurations are stored in a [[org.kiji.express.modeling.config.ModelEnvironment]]. For
+ * configurations are stored in a [[org.kiji.modeling.config.ModelEnvironment]]. For
  * example:
  * {{{
  *   class MyPreparer extends Preparer {

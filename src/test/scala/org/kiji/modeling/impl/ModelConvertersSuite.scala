@@ -17,41 +17,41 @@
  * limitations under the License.
  */
 
-package org.kiji.express.modeling.impl
+package org.kiji.modeling.impl
 
 import com.twitter.scalding.Source
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
-import org.kiji.express.modeling.ExtractFn
-import org.kiji.express.modeling.Extractor
-import org.kiji.express.modeling.Preparer
-import org.kiji.express.modeling.ScoreFn
-import org.kiji.express.modeling.Scorer
-import org.kiji.express.modeling.Trainer
-import org.kiji.express.modeling.config.AndFilter
-import org.kiji.express.modeling.config.ColumnRangeFilter
-import org.kiji.express.modeling.config.ExpressColumnFilter
-import org.kiji.express.modeling.config.ExpressColumnRequest
-import org.kiji.express.modeling.config.ExpressDataRequest
-import org.kiji.express.modeling.config.FieldBinding
-import org.kiji.express.modeling.config.InputSpec
-import org.kiji.express.modeling.config.KeyValueStoreSpec
-import org.kiji.express.modeling.config.KijiInputSpec
-import org.kiji.express.modeling.config.KijiOutputSpec
-import org.kiji.express.modeling.config.KijiSingleColumnOutputSpec
-import org.kiji.express.modeling.config.ModelDefinition
-import org.kiji.express.modeling.config.ModelEnvironment
-import org.kiji.express.modeling.config.OrFilter
-import org.kiji.express.modeling.config.OutputSpec
-import org.kiji.express.modeling.config.PrepareEnvironment
-import org.kiji.express.modeling.config.RegexQualifierFilter
-import org.kiji.express.modeling.config.ScoreEnvironment
-import org.kiji.express.modeling.config.SequenceFileSourceSpec
-import org.kiji.express.modeling.config.TextSourceSpec
-import org.kiji.express.modeling.config.TrainEnvironment
-import org.kiji.express.modeling.framework.ModelConverters
+import org.kiji.modeling.ExtractFn
+import org.kiji.modeling.Extractor
+import org.kiji.modeling.Preparer
+import org.kiji.modeling.ScoreFn
+import org.kiji.modeling.Scorer
+import org.kiji.modeling.Trainer
+import org.kiji.modeling.config.AndFilter
+import org.kiji.modeling.config.ColumnRangeFilter
+import org.kiji.modeling.config.ExpressColumnFilter
+import org.kiji.modeling.config.ExpressColumnRequest
+import org.kiji.modeling.config.ExpressDataRequest
+import org.kiji.modeling.config.FieldBinding
+import org.kiji.modeling.config.InputSpec
+import org.kiji.modeling.config.KeyValueStoreSpec
+import org.kiji.modeling.config.KijiInputSpec
+import org.kiji.modeling.config.KijiOutputSpec
+import org.kiji.modeling.config.KijiSingleColumnOutputSpec
+import org.kiji.modeling.config.ModelDefinition
+import org.kiji.modeling.config.ModelEnvironment
+import org.kiji.modeling.config.OrFilter
+import org.kiji.modeling.config.OutputSpec
+import org.kiji.modeling.config.PrepareEnvironment
+import org.kiji.modeling.config.RegexQualifierFilter
+import org.kiji.modeling.config.ScoreEnvironment
+import org.kiji.modeling.config.SequenceFileSourceSpec
+import org.kiji.modeling.config.TextSourceSpec
+import org.kiji.modeling.config.TrainEnvironment
+import org.kiji.modeling.framework.ModelConverters
 
 trait SerDeSuite extends FunSuite {
   def serDeTest[I](inputName: String, serdeName: String, input: => I)(operation: I => I) {
